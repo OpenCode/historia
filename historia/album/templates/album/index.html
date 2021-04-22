@@ -1,0 +1,90 @@
+{% extends "./base.html" %}
+
+{% block content %}
+
+    {% load static %}
+
+    <!-- Intro section   -->
+    <section class="intro-section">
+        <div class="intro-warp">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 p-0">
+                        <div class="intro-text">
+                            <h2>Scopri la storia di {{ site_info.city | title }}</h2>
+                            <p>{{ site_info.intro }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Intro section end  -->
+
+
+    <!-- Stats section  -->
+    <section class="milestone-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6" style="text-align: center;">
+                    <div class="milestone">
+                        <h2>{{ documents_number }}</h2>
+                        <p>Documenti</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6" style="text-align: center;">
+                    <div class="milestone">
+                        <h2>{{ donors_number }}</h2>
+                        <p>Donatori</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6" style="text-align: center;">
+                    <div class="milestone">
+                        <h2>--</h2>
+                        <p>Giorni di attività</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6" style="text-align: center;">
+                    <div class="milestone">
+                        <h2>--</h2>
+                        <p>Visitatori unici</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Stats section end  -->
+
+    <!-- Last documents section  -->
+    <div class="hero-section">
+        <div class="hero-slider owl-carousel">
+            {% for document in last_documents|slice:":8" %}
+                <div class="hero-item portfolio-item set-bg" data-setbg="{{document.content.url}}">
+                    <a href="{% url 'document' document.id %}" class="hero-link">
+                        <h2>Approfondisci</h2>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="hero-slider owl-carousel">
+            {% for document in last_documents|slice:"8:15" %}
+                <div class="hero-item portfolio-item set-bg" data-setbg="{{document.content.url}}">
+                    <a href="{% url 'document' document.id %}" class="hero-link">
+                        <h2>Approfondisci</h2>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="hero-slider owl-carousel">
+            {% for document in last_documents|slice:"15:" %}
+                <div class="hero-item portfolio-item set-bg" data-setbg="{{document.content.url}}">
+                    <a href="{% url 'document' document.id %}" class="hero-link">
+                        <h2>Approfondisci</h2>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Last documents section end  -->
+
+{% endblock %}

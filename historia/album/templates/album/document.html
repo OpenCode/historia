@@ -1,0 +1,25 @@
+{% extends "./base.html" %}
+
+{% block content %}
+
+    {% load static %}
+
+    <!-- About section  -->
+    <section class="about-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 p-0">
+                    <img class="img-fluid rounded mx-auto d-block" src="{{document.content.url}}" alt="{{document.name}}" />
+                </div>
+                <div class="col-lg-6 p-0">
+                    <h2>{{ document.name|title }}</h2>
+                    <h3>{{ document.year }}</h3>
+                    <h4>Donata da <a href="{{ document.donor.url }}" target="_blank">{{ document.donor.name|title }}</a></h4>
+                    <p>{{ document.description.html|safe }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About section end  -->
+
+{% endblock %}

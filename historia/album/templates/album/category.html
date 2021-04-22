@@ -1,0 +1,49 @@
+{% extends "./base.html" %}
+
+{% block content %}
+
+    {% load static %}
+
+    <!-- Intro section   -->
+    <section class="intro-section">
+        <div class="intro-warp">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 p-0">
+                        <div class="intro-text">
+                            <h2>{{ category.name }}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Intro section end  -->
+
+    <!-- Portfolio section  -->
+    <div class="portfolio-2-section">
+        <div class="portfolio-warp">
+            <div class="row portfolio-gallery m-0">
+                {% for document in documents %}
+                    <div class="mix col-lg-4 col-sm-6 p-0">
+                        <a href="{% url 'document' document.id %}">
+                            <div class="portfolio-box">
+                                <div class="portfolio-item set-bg" data-setbg="{{document.content.url}}"></div>
+                                <h6>{{ document.name }}</h6>
+                                <p>Donato da {{ document.donor.name }}</p>
+                                <p>{{ document.year }}</p>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% comment %}
+        <div class="text-center">
+            <button class="site-btn">Load More</button>
+        </div>
+        {% endcomment %}
+    </div>
+    <!-- Portfolio section end  -->
+
+{% endblock %}

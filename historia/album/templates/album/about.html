@@ -1,0 +1,25 @@
+{% extends "./base.html" %}
+
+{% block content %}
+
+    {% load static %}
+
+    <!-- About section  -->
+    <section class="about-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 p-0">
+                    <div class="about-bg set-bg" data-setbg="{{ site_info.about_image }}"></div>
+                </div>
+                <div class="col-lg-6 p-0">
+                    <div class="about-text">
+                        <h2>Il progetto: {{ site_info.title }}</h2>
+                        <p>{{ site_info.about|safe }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About section end  -->
+
+{% endblock %}
